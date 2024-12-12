@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Nomor2 {
 
-    static ArrayList<Integer> keranjangBelanja = new ArrayList<>();
+    static ArrayList<Integer> keranjangBelanja = new ArrayList<Interger>();
 
     public static void main(String[] args) {
         int[] hargaMenu = {35000, 45000, 20000, 15000};
@@ -12,7 +12,7 @@ public class Nomor2 {
 
         while (true) {
             System.out.print("Masukan nama menu [Burger/Steak/Spaghetti/Kentang]: ");
-            String pilihanMenu = input.next().toLowerCase(); // Convert to lowercase for case-insensitive comparison
+            String pilihanMenu = input.next().toLowerCase();
             int indexMenu = -1;
 
             for (int i = 0; i < namaMenu.length; i++) {
