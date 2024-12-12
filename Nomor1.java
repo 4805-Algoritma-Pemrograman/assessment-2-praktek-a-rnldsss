@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class no1 {
+public class Nomor1 {
     public static void tampilkanBilanganGanjil(int n) {
         System.out.println("Bilangan ganjil dari 0 hingga " + n + " adalah:\n");
         for (int i = 0; i <= n; i++) {
