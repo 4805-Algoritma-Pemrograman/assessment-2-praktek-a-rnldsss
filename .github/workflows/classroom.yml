@@ -23,7 +23,7 @@ jobs:
         input: '11'
         expected-output: |-
           1 3 5 7 9 11
-          1
+          2
         comparison-method: exact
         timeout: 10
         max-score: 10
@@ -60,7 +60,7 @@ jobs:
         input: '7'
         expected-output: |-
           1 3 5 7
-          1
+          2
         comparison-method: exact
         timeout: 10
         max-score: 10
