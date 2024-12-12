@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Nomor2 {
-
     static ArrayList<Integer> keranjangBelanja = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -42,7 +41,6 @@ public class Nomor2 {
 
         System.out.println("Total item pesanan : " + keranjangBelanja.size());
         System.out.println("Total yang harus dibayar : " + totalBayar);
-        System.out.println(Nomor2.class.getDeclaredMethods().length);
     }
 
     public static int hitungTotalBelanja() {
