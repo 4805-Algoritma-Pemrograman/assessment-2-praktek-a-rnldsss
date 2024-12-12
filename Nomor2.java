@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Nomor2 {
+
     static ArrayList<Integer> keranjangBelanja = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -11,11 +12,11 @@ public class Nomor2 {
 
         while (true) {
             System.out.print("Masukan nama menu [Burger/Steak/Spaghetti/Kentang]: ");
-            String pilihanMenu = input.next();
+            String pilihanMenu = input.next().toLowerCase(); // Convert to lowercase for case-insensitive comparison
             int indexMenu = -1;
 
             for (int i = 0; i < namaMenu.length; i++) {
-                if (namaMenu[i].equals(pilihanMenu)) {
+                if (namaMenu[i].equalsIgnoreCase(pilihanMenu)) {
                     indexMenu = i;
                     break;
                 }
@@ -28,9 +29,9 @@ public class Nomor2 {
             }
 
             System.out.print("Input lagi (Y/N)?: ");
-            String jawaban = input.next();
+            String jawaban = input.next().toLowerCase();
 
-            if (jawaban.equals("N")) {
+            if (jawaban.equals("n")) {
                 break;
             }
         }
@@ -52,12 +53,12 @@ public class Nomor2 {
     }
 
     public static int hitungDiskon(int totalBelanja) {
-        if (totalBelanja < 50000) {
-            return 0;
-        } else if (totalBelanja >= 50000 && totalBelanja <= 100000) {
-            return (int) (totalBelanja * 0.05);
-        } else {
-            return (int) (totalBelanja * 0.1);
+        double discountRate = 0;
+        if (totalBelanja >= 50000 && totalBelanja <= 100000) {
+            discountRate = 0.05;
+        } else if (totalBelanja > 100000) {
+            discountRate = 0.1;
         }
+        return (int) (totalBelanja * discountRate);
     }
 }
