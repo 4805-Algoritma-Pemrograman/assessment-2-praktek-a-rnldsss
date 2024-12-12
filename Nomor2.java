@@ -2,49 +2,39 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Nomor2 {
-
-    static ArrayList<Integer> keranjangBelanja = new ArrayList<Interger>();
-
     public static void main(String[] args) {
-        int[] hargaMenu = {35000, 45000, 20000, 15000};
-        String[] namaMenu = {"Burger", "Steak", "Spaghetti", "Kentang"};
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+
+        ArrayList<Integer> keranjangBelanja = new ArrayList<>();
 
         while (true) {
-            System.out.print("Masukan nama menu [Burger/Steak/Spaghetti/Kentang]: ");
-            String pilihanMenu = input.next().toLowerCase();
-            int indexMenu = -1;
+            System.out.println("Masukan nama menu [Burger/Steak/Spaghetti/Kentang]:");
+            String inputMenu = scanner.nextLine();
 
-            for (int i = 0; i < namaMenu.length; i++) {
-                if (namaMenu[i].equalsIgnoreCase(pilihanMenu)) {
-                    indexMenu = i;
-                    break;
-                }
-            }
-
+            int indexMenu = getIndexMenu(inputMenu);
             if (indexMenu != -1) {
-                keranjangBelanja.add(hargaMenu[indexMenu]);
-            } else {
-                System.out.println("Menu tidak tersedia");
+                keranjangBelanja.add(getHargaMenu(indexMenu));
             }
 
-            System.out.print("Input lagi (Y/N)?: ");
-            String jawaban = input.next().toLowerCase();
+            System.out.println("Input lagi (Y/N)?:");
+            String inputLagi = scanner.nextLine();
 
-            if (jawaban.equals("n")) {
+            if (inputLagi.equalsIgnoreCase("N")) {
                 break;
             }
         }
 
-        int totalBelanja = hitungTotalBelanja();
+        int totalBelanja = hitungTotalBelanja(keranjangBelanja);
         int diskon = hitungDiskon(totalBelanja);
         int totalBayar = totalBelanja - diskon;
 
         System.out.println("Total item pesanan : " + keranjangBelanja.size());
         System.out.println("Total yang harus dibayar : " + totalBayar);
+        System.out.println(keranjangBelanja.size());
     }
 
-    public static int hitungTotalBelanja() {
+    // Menghitung total belanja
+    private static int hitungTotalBelanja(ArrayList<Integer> keranjangBelanja) {
         int total = 0;
         for (int harga : keranjangBelanja) {
             total += harga;
@@ -52,13 +42,36 @@ public class Nomor2 {
         return total;
     }
 
-    public static int hitungDiskon(int totalBelanja) {
-        double discountRate = 0;
-        if (totalBelanja >= 50000 && totalBelanja <= 100000) {
-            discountRate = 0.05;
-        } else if (totalBelanja > 100000) {
-            discountRate = 0.1;
+    // Menghitung diskon
+    private static int hitungDiskon(int totalBelanja) {
+        if (totalBelanja < 50000) {
+            return 0;
+        } else if (totalBelanja >= 50000 && totalBelanja <= 100000) {
+            return (int) (totalBelanja * 0.05);
+        } else {
+            return (int) (totalBelanja * 0.1);
         }
-        return (int) (totalBelanja * discountRate);
+    }
+
+    // Mendapatkan harga menu
+    private static int getHargaMenu(int indexMenu) {
+        int[] hargaMenu = {35000, 45000, 20000, 15000};
+        return hargaMenu[indexMenu];
+    }
+
+    // Mendapatkan index menu
+    private static int getIndexMenu(String inputMenu) {
+        switch (inputMenu) {
+            case "Burger":
+                return 0;
+            case "Steak":
+                return 1;
+            case "Spaghetti":
+                return 2;
+            case "Kentang":
+                return 3;
+            default:
+                return -1;
+        }
     }
 }
