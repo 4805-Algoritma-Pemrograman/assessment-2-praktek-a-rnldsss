@@ -1,7 +1,8 @@
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Nomor2 {
+    
     static int[] hargaMenu = {35000, 45000, 20000, 15000};
     static ArrayList<Integer> keranjangBelanja = new ArrayList<>();
     static ArrayList<String> menuMakanan = new ArrayList<>();
