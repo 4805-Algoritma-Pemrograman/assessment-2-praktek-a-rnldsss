@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Nomor2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Masukan nama menu [Burger/Steak/Spaghetti/Kentang]:");
+        System.out.print("Masukan nama menu [Burger/Steak/Spaghetti/Kentang]: ");
         String inputMenu = scanner.nextLine();
 
         ArrayList<Integer> keranjangBelanja = new ArrayList<>();
@@ -14,12 +14,12 @@ public class Nomor2 {
         }
 
         while (true) {
-            System.out.println("Input lagi (Y/N)?:");
+            System.out.print("Input lagi (Y/N)?: ");
             String inputLagi = scanner.nextLine();
             if (inputLagi.equalsIgnoreCase("N")) {
                 break;
             }
-            System.out.println("Masukan nama menu [Burger/Steak/Spaghetti/Kentang]:");
+            System.out.print("Masukan nama menu [Burger/Steak/Spaghetti/Kentang]: ");
             inputMenu = scanner.nextLine();
             indexMenu = getIndexMenu(inputMenu);
             if (indexMenu != -1) {
@@ -33,10 +33,9 @@ public class Nomor2 {
 
         System.out.println("Total item pesanan : " + keranjangBelanja.size());
         System.out.println("Total yang harus dibayar : " + totalBayar);
-        System.out.println(keranjangBelanja.size());
     }
 
-    // Ngitung total belanja
+    // Buat ngitung total belanja
     private static int hitungTotalBelanja(ArrayList<Integer> keranjangBelanja) {
         int total = 0;
         for (int harga : keranjangBelanja) {
@@ -45,7 +44,7 @@ public class Nomor2 {
         return total;
     }
 
-    // Ngitung diskon
+    // Buat ngitung diskon
     private static int hitungDiskon(int totalBelanja) {
         if (totalBelanja < 50000) {
             return 0;
@@ -56,13 +55,13 @@ public class Nomor2 {
         }
     }
 
-    // Mendapatkan harga menu
+    // untuk mendapatkan harga menu
     private static int getHargaMenu(int indexMenu) {
         int[] hargaMenu = {35000, 45000, 20000, 15000};
         return hargaMenu[indexMenu];
     }
 
-    // Mengindex menu
+    // Ngindex menu
     private static int getIndexMenu(String inputMenu) {
         switch (inputMenu) {
             case "Burger":
