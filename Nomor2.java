@@ -7,7 +7,7 @@ public class Nomor2 {
         System.out.print("Masukan nama menu [Burger/Steak/Spaghetti/Kentang]: ");
         String inputMenu = scanner.nextLine();
 
-        ArrayList<Integer> keranjangBelanja = new ArrayList<>();
+        ArrayList<Integer> keranjangBelanja = new ArrayList<Interger>();
         int indexMenu = getIndexMenu(inputMenu);
         if (indexMenu != -1) {
             keranjangBelanja.add(getHargaMenu(indexMenu));
